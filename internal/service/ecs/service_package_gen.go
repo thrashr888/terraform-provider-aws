@@ -32,6 +32,16 @@ func (p *servicePackage) FrameworkResources(ctx context.Context) []*inttypes.Ser
 	return []*inttypes.ServicePackageFrameworkResource{}
 }
 
+func (p *servicePackage) Actions(ctx context.Context) []*inttypes.ServicePackageAction {
+	return []*inttypes.ServicePackageAction{
+		{
+			Factory:  newUpdateServiceAction,
+			TypeName: "aws_ecs_update_service",
+			Name:     "Update Service",
+		},
+	}
+}
+
 func (p *servicePackage) SDKDataSources(ctx context.Context) []*inttypes.ServicePackageSDKDataSource {
 	return []*inttypes.ServicePackageSDKDataSource{
 		{
